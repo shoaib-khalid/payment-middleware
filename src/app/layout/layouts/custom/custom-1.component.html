@@ -1,0 +1,13 @@
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full">
+    <ng-scrollbar class="scroll-event">
+        <!-- Content -->
+        <div class="flex flex-col flex-auto">
+            <!-- Header -->
+            <page-header></page-header>
+            <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+                 Otherwise, layout changes won't be registered and the view won't be updated! -->
+            <router-outlet *ngIf="true"></router-outlet>
+        </div>
+    </ng-scrollbar>
+</div>
