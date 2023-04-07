@@ -43,6 +43,7 @@
                             "input": "src",
                             "output": "/"
                           },
+                          "src/.htaccess",
                           "src/manifest.webmanifest"
                         ],
                         "stylePreprocessorOptions": {
