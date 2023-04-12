@@ -3,10 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { AppConfig } from 'app/config/service.config';
-import { AuthService } from '../auth/auth.service';
-import { Store } from './store.types';
 import { LogService } from '../logging/log.service';
-import { Order } from './order.types';
+import { Order } from './types/order.types';
+import { Store } from './types/store.types';
 
 @Injectable({
     providedIn: 'root'

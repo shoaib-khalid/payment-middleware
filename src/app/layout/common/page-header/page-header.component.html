@@ -1,6 +1,6 @@
-<div class="w-full h-auto bg-gradient-to-tr from-cyan-400 to-cyan-500 flex flex-col p-4 gap-4">
+<div class="w-full h-auto bg-merchantblue flex flex-col p-4 pb-3 gap-2">
     <!-- Store info -->
-    <div class="grid grid-cols-4 gap-4 items-start justify-between">
+    <div class="grid grid-cols-4 gap-3 items-start justify-between">
         <div class="col-span-3 text-white flex flex-col gap-1.5 leading-none">
             <span class="text-xl font-medium truncate">{{store.name}}</span>
             <div class="flex flex-row items-center gap-x-1 tracking-tight">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <img
-            class="col-span-1 object-cover rounded-full w-full h-auto ring-2 ring-white"
+            class="col-span-1 object-cover rounded-full w-16 h-16 ring-2 ring-white justify-self-end"
             [src]="storeLogo.assetUrl" alt="Store Logo">
     </div>
     <!-- Order Details -->

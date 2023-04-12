@@ -5,6 +5,7 @@ export interface IAppConfig {
     apiServer: {
         productService      : string,
         orderService        : string,
+        paymentService      : string
     };
     marketplaceDomain       : string,
     dineInDomain            : string,

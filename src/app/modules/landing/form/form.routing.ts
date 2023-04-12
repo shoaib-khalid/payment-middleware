@@ -1,6 +1,8 @@
 import { Route } from '@angular/router';
 import { AccessGuard } from 'app/core/guard/access.guard';
 import { FormComponent } from './form.component';
+import { AccessFormGuard } from 'app/core/guard/access-form.guard';
+import { FormResolver } from '../landing.resolvers';
 
 export const formRoutes: Route[] = [
     {
@@ -8,7 +10,18 @@ export const formRoutes: Route[] = [
         data: {
             layout: 'empty'
         },
-        // canActivate: [AccessGuard],
+        canActivate : [AccessFormGuard],
         component: FormComponent
+    },
+    {
+        path        : ':invoiceId',
+        data: {
+            layout: 'empty'
+        },
+        component   : FormComponent,
+        canActivate : [AccessFormGuard],
+        resolve     : {
+            FormResolver  : FormResolver,
+        }
     }
 ];

@@ -6,8 +6,8 @@ import { AppConfig, Scheme, Theme, Themes } from 'app/core/config/app.config';
 import { Layout } from 'app/layout/layout.types';
 import { DOCUMENT } from '@angular/common';
 import { StoresService } from 'app/core/services/store.service';
-import { Store, StoreAsset } from 'app/core/services/store.types';
-import { Order } from 'app/core/services/order.types';
+import { Order } from 'app/core/services/types/order.types';
+import { Store, StoreAsset } from 'app/core/services/types/store.types';
 
 @Component({
     selector     : 'page-header',

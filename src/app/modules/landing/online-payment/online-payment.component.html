@@ -1,5 +1,5 @@
 <div class="flex flex-col items-center justify-center w-full h-full bg-default">
-	<div class="flex flex-row gap-2 w-full bg-white items-center h-14 p-4">
+	<div class="flex flex-row gap-2 w-full bg-white items-center h-12 p-4">
 		<span class="text-base font-medium">
 			Payment Method:
 		</span>
@@ -10,21 +10,21 @@
 	<div class="flex flex-col items-center justify-center w-full h-full bg-default p-4 gap-6">
 		<mat-card class="flex flex-col h-auto rounded-md w-full">
 			<mat-card-header class="pb-2.5">
-				<span class="w-full text-center font-semibold text-base">
+				<span class="w-full text-center font-semibold text-lg">
 					Please scan to make payment
 				</span>
 			</mat-card-header>
 			<mat-card-content>
 				<div class="flex justify-center">
 					<qrcode
-					  [qrdata]="qrUrl"
-					  [allowEmptyString]="true"
-					  [cssClass]="''"
-					  [elementType]="'canvas'"
-					  [errorCorrectionLevel]="'M'"
-					  [margin]="1"
-					  [scale]="1"
-					  [width]="300"
+						[qrdata]="qrUrl"
+						[allowEmptyString]="true"
+						[cssClass]="''"
+						[elementType]="'canvas'"
+						[errorCorrectionLevel]="'M'"
+						[margin]="1"
+						[scale]="1"
+						[width]="300"
 					></qrcode>
 				  </div>
 			</mat-card-content>
