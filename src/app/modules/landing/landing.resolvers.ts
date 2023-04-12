@@ -79,8 +79,6 @@ export class FormResolver implements Resolve<any>
     {
         const invoiceId = route.paramMap.get('invoiceId');        
 
-        return of(true);
-
         return this._paymentService.getPaymentDetails(invoiceId)
                 .pipe(
                     catchError(() =>

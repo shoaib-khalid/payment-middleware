@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+<div class="absolute top-0 bg-white" *ngIf="modalVersion">
+    <div class="m-2">
+      <button type="button" class="absolute top-0 end-0 m-1" aria-label="Close" (click)="closeVersion()"></button>
+      A new version of this app is available. <span class="underline text-blue-600" (click)="updateVersion()">Update now</span>
+    </div>
+</div>
