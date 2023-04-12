@@ -17,5 +17,6 @@
     "storeFrontDomain"          : ".dev-my.symplified.ai",
     "marketplaceDomain"         : "dev-my.symplified.ai",
     "merchantPortalDomain"      : "merchant.dev-my.symplified.ai",
-    "logging": 0
+    "logging"                   : 0,
+    "paymentMiddleware"         : "paymentv2.dev-my.symplified.ai"
 }

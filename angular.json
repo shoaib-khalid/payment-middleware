@@ -32,7 +32,9 @@
                             "crypto-js/hmac-sha256",
                             "crypto-js/enc-base64",
                             "flat",
-                            "quill"
+                            "quill",
+                            "qrcode",
+                            "bezier-easing"
                         ],
                         "assets": [
                           "src/favicon-16x16.png",

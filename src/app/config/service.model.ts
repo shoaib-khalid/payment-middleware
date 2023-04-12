@@ -9,4 +9,5 @@ export interface IAppConfig {
     marketplaceDomain       : string,
     dineInDomain            : string,
     logging                 : number;
+    paymentMiddleware       : string;
 }

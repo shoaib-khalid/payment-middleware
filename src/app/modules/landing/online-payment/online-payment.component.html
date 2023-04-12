@@ -1,23 +1,23 @@
 <div class="flex flex-col items-center justify-center w-full h-full bg-default">
-	<div class="flex flex-row gap-2 w-full bg-white items-center h-16 p-4">
-		<span class="text-lg font-medium">
+	<div class="flex flex-row gap-2 w-full bg-white items-center h-14 p-4">
+		<span class="text-base font-medium">
 			Payment Method:
 		</span>
-		<span class="text-lg font-semibold">
+		<span class="text-base font-semibold">
 			Credit/Debit Card
 		</span>
 	</div>
 	<div class="flex flex-col items-center justify-center w-full h-full bg-default p-4 gap-6">
 		<mat-card class="flex flex-col h-auto rounded-md w-full">
 			<mat-card-header class="pb-2.5">
-				<span class="w-full text-center font-semibold text-lg">
+				<span class="w-full text-center font-semibold text-base">
 					Please scan to make payment
 				</span>
 			</mat-card-header>
 			<mat-card-content>
 				<div class="flex justify-center">
 					<qrcode
-					  [qrdata]="'https://symplified.biz'"
+					  [qrdata]="qrUrl"
 					  [allowEmptyString]="true"
 					  [cssClass]="''"
 					  [elementType]="'canvas'"

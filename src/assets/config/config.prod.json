@@ -17,5 +17,6 @@
     "storeFrontDomain"          : ".deliverin.my",
     "marketplaceDomain"         : "deliverin.my",
     "merchantPortalDomain"      : "merchant.symplified.biz",
-    "logging": 0
+    "logging": 0,
+    "paymentMiddleware"         : "paymentv2.deliverin.my"
 }
