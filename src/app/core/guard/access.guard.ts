@@ -33,7 +33,7 @@ export class AccessGuard implements CanActivate
         // Check if query params are provided
         if (!queryParams['storeId'] || !queryParams['orderId']) {
             
-            // Redirect to another route
+            // Redirect to 404
             this._router.navigate(['/404-not-found']);
             return false;
         }

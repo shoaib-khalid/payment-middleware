@@ -28,12 +28,13 @@ export class AccessFormGuard implements CanActivate
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
     {
-        const param = route.paramMap.get('invoiceId');
+        const transactionId = route.paramMap.get('transactionId');
+        const formType = route.paramMap.get('formType');
 
-        // Check if query params are provided
-        if (!param) {
+        // Check if query transactionId is provided, and formType is 'bnpl' or 'card'
+        if (!transactionId || (formType !== 'bnpl' && formType !== 'card')) {
             
-            // Redirect to another route
+            // Redirect to 404
             this._router.navigate(['/404-not-found']);
             return false;
         }

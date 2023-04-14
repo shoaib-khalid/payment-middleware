@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from 'app/shared/shared.module';
 import { payLaterRoutes } from './pay-later.routing';
 import { PayLaterComponent } from './pay-later.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
     declarations: [
@@ -14,7 +16,9 @@ import { PayLaterComponent } from './pay-later.component';
         RouterModule.forChild(payLaterRoutes),
         MatButtonModule,
         MatIconModule,
-        SharedModule
+        SharedModule,
+        MatTooltipModule,
+        MatFormFieldModule
     ]
 })
 export class PayLaterModule

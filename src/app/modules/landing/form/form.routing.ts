@@ -14,7 +14,7 @@ export const formRoutes: Route[] = [
         component: FormComponent
     },
     {
-        path        : ':invoiceId',
+        path        : ':formType/:transactionId',
         data: {
             layout: 'empty'
         },

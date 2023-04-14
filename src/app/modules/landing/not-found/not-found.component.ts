@@ -1,8 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { finalize, Subject } from 'rxjs';
-import { AppConfig } from "app/config/service.config";
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector     : 'not-found',
@@ -17,6 +13,5 @@ export class NotFoundComponent
      */
     constructor()
     {
-        
     }
 }
