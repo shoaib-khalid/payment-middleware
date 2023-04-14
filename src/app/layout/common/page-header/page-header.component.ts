@@ -37,6 +37,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy
     store: Store = null;
     storeLogo: StoreAsset = null;
     order: Order = null;
+    loadingStatus: boolean = false;
 
     /**
      * Constructor
@@ -78,7 +79,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((order: Order) => {
                 if (order) {
-                    this.order = order;
+                    this.order = order;                    
                 }
 
                 // Mark for check
@@ -109,5 +110,22 @@ export class PageHeaderComponent implements OnInit, OnDestroy
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * Get order by id to get the payment status on click
+     */
+    reloadStatus() {
+
+        // Set loading to true, spinner will be visible
+        this.loadingStatus = true;
+
+        // Get order by id
+        this._storesService.getOrderById(this.order.id)
+            .subscribe(() => {
+
+                // Hide spinner
+                this.loadingStatus = false;
+            })
+        
+    }
 
 }

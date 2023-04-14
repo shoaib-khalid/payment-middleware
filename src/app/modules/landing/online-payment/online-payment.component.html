@@ -8,9 +8,9 @@
 		</span>
 	</div>
 	<div class="flex flex-col items-center justify-center w-full h-full bg-default px-4 pt-3 pb-1 gap-6">
-		<mat-card class="flex flex-col h-auto rounded-md w-full">
+		<mat-card class="flex flex-col h-auto rounded-md max-w-72">
 			<mat-card-header class="pb-2.5">
-				<span class="w-full text-center font-semibold text-lg">
+				<span class="w-full text-center font-semibold text-lg truncate">
 					Please scan to make payment
 				</span>
 			</mat-card-header>
@@ -24,7 +24,7 @@
 						[errorCorrectionLevel]="'M'"
 						[margin]="1"
 						[scale]="1"
-						[width]="300"
+						[width]="250"
 					></qrcode>
 				  </div>
 			</mat-card-content>
