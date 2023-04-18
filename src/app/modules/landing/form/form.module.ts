@@ -11,10 +11,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { BNPLComponent } from '../bnpl/bnpl.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
     declarations: [
-        FormComponent
+        FormComponent,
+        BNPLComponent
     ],
     imports     : [
         RouterModule.forChild(formRoutes),
@@ -26,7 +29,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatDatepickerModule,
         MatInputModule,
         CreditCardDirectivesModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatRadioModule
     ]
 })
 export class FormModule

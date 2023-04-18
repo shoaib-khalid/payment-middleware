@@ -13,7 +13,6 @@ import { PaymentService } from 'app/core/services/payment.service';
 export class OnlinePaymentComponent implements OnInit, OnDestroy
 {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-
     qrUrl: string = '';
 
     /**

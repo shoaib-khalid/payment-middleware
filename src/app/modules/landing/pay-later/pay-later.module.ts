@@ -6,7 +6,8 @@ import { SharedModule } from 'app/shared/shared.module';
 import { payLaterRoutes } from './pay-later.routing';
 import { PayLaterComponent } from './pay-later.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { QRCodeModule } from 'angularx-qrcode';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         MatIconModule,
         SharedModule,
         MatTooltipModule,
-        MatFormFieldModule
+        MatCardModule,
+        QRCodeModule
     ]
 })
 export class PayLaterModule

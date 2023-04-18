@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CreditCardValidators } from 'angular-cc-library';
 import { Subject } from 'rxjs';
 import { FormValidationService } from './form.validation.service';
-import { BetterPayment } from 'app/core/services/types/payment.types';
+import { BNPLList, BetterPayment } from 'app/core/services/types/payment.types';
 import { PaymentService } from 'app/core/services/payment.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class FormComponent implements OnInit, OnDestroy
     form: UntypedFormGroup
     formType: string = '';
     transactionId: string = '';
+    bnplPage: boolean = false;
 
     /**
      * Constructor
@@ -47,12 +48,12 @@ export class FormComponent implements OnInit, OnDestroy
             this.form = this._formBuilder.group({
                 name        : ['', [Validators.required]],
                 phoneNo     : ['', [Validators.required, FormValidationService.phoneNumberValidator]],
+                email       : ['', [FormValidationService.emailValidator]],
+
             })
         }
     }
     ngOnInit(): void {
-
-
     }
 
     ngOnDestroy(): void {
@@ -96,12 +97,43 @@ export class FormComponent implements OnInit, OnDestroy
         }
         // Form Type BNPL
         else if (this.formType === 'bnpl') {
+
+            this.bnplPage = true;
             
             const name = this.form.get('name').value;
             const phoneNo = this.form.get('phoneNo').value; 
 
         }
 
+        
+    }
+
+    /**
+     * Emitted on click Proceed
+     * 
+     * @param value 
+     */
+    confirmBNPL(value: BNPLList) {
+
+        const betterPayRequest: BetterPayment = {
+            customerName: this.form.get('name').value,
+            // orderTotalAmount: 0,
+            paymentService: value.providerValue, // Atome
+            paymentType: value.type, // BNPL
+            transactionId: this.transactionId,
+            phoneNo: this.form.get('phoneNo').value,
+            email: this.form.get('email').value
+        }
+
+        // Post to payment service
+        this._paymentService.postBetterPayment(betterPayRequest)
+        .subscribe((response) => {
+
+            if (response && response.paymentUrl) {
+                window.location.href = response.paymentUrl;
+            }
+
+        })
         
     }
 }

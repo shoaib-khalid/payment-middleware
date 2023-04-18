@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, of, switchMap } from 'rxjs';
 import { AppConfig } from 'app/config/service.config';
 import { LogService } from '../logging/log.service';
-import { BetterPayment, PaymentRequestBody, PaymentRequestResp } from './types/payment.types';
+import { BNPLList, BetterPayment, PaymentRequestBody, PaymentRequestResp } from './types/payment.types';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class PaymentService {
 
 	private _paymentDetail: BehaviorSubject<any | null> = new BehaviorSubject(null);
     private _paymentRequest: BehaviorSubject<PaymentRequestResp | null> = new BehaviorSubject(null);
+    private _bnplList: BehaviorSubject<BNPLList[] | null> = new BehaviorSubject(null);
 
   	constructor(
 		private _httpClient: HttpClient,
@@ -31,9 +32,11 @@ export class PaymentService {
     /** Getter for payment request */
     get paymentRequest$(): Observable<PaymentRequestResp> { return this._paymentRequest.asObservable(); }
 
+    /** Getter for BNPL list */
+    get bnplList$(): Observable<BNPLList[]> { return this._bnplList.asObservable(); }
+
 	getPaymentDetails(invoiceId: string): Observable<any>
     {
-
         if (invoiceId === null) return of(null);
         
         let paymentService = this._apiServer.settings.apiServer.paymentService;
@@ -56,7 +59,6 @@ export class PaymentService {
 
 	requestMakePayment(paymentBody: PaymentRequestBody): Observable<PaymentRequestResp>
     {
-        
         let paymentService = this._apiServer.settings.apiServer.paymentService;
         let accessToken = "accessToken";
 
@@ -81,7 +83,6 @@ export class PaymentService {
 
     postBetterPayment(paymentBody: BetterPayment): Observable<any>
     {
-        
         let paymentService = this._apiServer.settings.apiServer.paymentService;
         let accessToken = "accessToken";
 
@@ -94,6 +95,26 @@ export class PaymentService {
                 switchMap(async (response) => {
                     this._logging.debug("Response from StoresService (postBetterPayment)", response);
 
+                    return response["data"];
+                })
+            )
+    }
+
+    getBNPLList(): Observable<BNPLList[]>
+    {
+        let paymentService = this._apiServer.settings.apiServer.paymentService;
+        let accessToken = "accessToken";
+
+        const header = {
+            headers: new HttpHeaders().set("Authorization", `Bearer ${accessToken}`),
+        };
+        
+        return this._httpClient.get<any>(paymentService + '/payments/get/BNPLList', header)
+            .pipe(
+                switchMap(async (response) => {
+                    this._logging.debug("Response from StoresService (getBNPLList)", response);
+
+                    this._bnplList.next(response["data"]);
                     return response["data"];
                 })
             )

@@ -1,5 +1,5 @@
 <div class="flex flex-col items-center justify-center w-full h-full bg-default p-2">
-	<div class="bg-white rounded-lg w-full p-4 flex flex-col gap-3 shadow">
+	<div *ngIf="bnplPage === false; else bnplTemplate" class="bg-white rounded-lg w-full p-4 flex flex-col gap-3 shadow md:max-w-2/3">
 		<!-- Form Credit/Debit-->
 		<ng-container *ngIf="formType === 'card'">
 			<!-- Logos -->
@@ -16,7 +16,7 @@
 						<mat-form-field
 							class="w-full"
 							[subscriptSizing]="'dynamic'">
-							<mat-label>Name</mat-label>
+							<mat-label>Cardholder name</mat-label>
 							<mat-icon
 								class="icon-size-5"
 								[svgIcon]="'heroicons_solid:identification'"
@@ -157,12 +157,29 @@
 								matInput>
 						</mat-form-field>
 					</div>
+					<!-- Email -->
+					<div class="col-span-4 sm:col-span-2 flex flex-col">
+						<mat-form-field
+							class="w-full"
+							[subscriptSizing]="'dynamic'">
+							<mat-label>Email</mat-label>
+							<mat-icon
+								class="icon-size-5"
+								[svgIcon]="'heroicons_solid:mail'"
+								matPrefix></mat-icon>
+							<input 
+								required="true"
+								type="text" 
+								[formControlName]="'email'" 
+								matInput>
+						</mat-form-field>
+					</div>					
 					<!-- Phone Number -->
 					<div class="col-span-4 sm:col-span-2 flex flex-col">
 						<mat-form-field
 							class="w-full"
 							[subscriptSizing]="'dynamic'">
-							<mat-label>Phone Number</mat-label>
+							<mat-label>Phone number</mat-label>
 							<mat-icon
 								class="icon-size-5"
 								[svgIcon]="'heroicons_solid:phone'"
@@ -192,10 +209,16 @@
 				[ngClass]="form.invalid ? 'bg-gray-300 cursor-default' : 'bg-emerald-500 active:bg-emerald-600 cursor-pointer'"
 				for="confirm-button"
 				matRipple>
-				<span class="justify-center text-lg text-white">Confirm</span>
+				<span class="justify-center text-lg text-white">{{ formType === 'bnpl' ? 'Next' : 'Confirm' }}</span>
 			</label>
 		</div>
 		<!-- Disclaimer -->
 		<span class="text-sm leading-snug font-medium tracking-tight">Disclaimer: <br>We value your privacy and security. We would like to assure you that we do not save or store your information.</span>
 	</div>
+	<!-- BNPL page -->
+	<ng-template #bnplTemplate>
+		<div class="bg-white rounded-lg w-full p-4 flex flex-col gap-3 shadow md:max-w-2/3">
+			<app-bnpl (dataFromBNPLTemplate)="confirmBNPL($event)"></app-bnpl>
+		</div>
+	</ng-template>
 </div>

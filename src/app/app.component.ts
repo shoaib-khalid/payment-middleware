@@ -29,15 +29,22 @@ export class AppComponent
         //         document.location.reload();
         //     });
 
+        // if (this._swUpdate.isEnabled) {
+        //     this._swUpdate.versionUpdates.pipe(
+        //         filter((evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+        //         map((evt: any) => {
+        //             console.info(`currentVersion=[${evt.currentVersion} | latestVersion=[${evt.latestVersion}]`);
+        //             this.modalVersion = true;
+        //         }),
+        //     );
+        // }
         if (this._swUpdate.isEnabled) {
-            this._swUpdate.versionUpdates.pipe(
-                filter((evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
-                map((evt: any) => {
-                    console.info(`currentVersion=[${evt.currentVersion} | latestVersion=[${evt.latestVersion}]`);
-                    this.modalVersion = true;
-                }),
-            );
-        }
+
+            this._swUpdate.available.subscribe(() => {
+                this._swUpdate.activateUpdate()
+                    .then(()=> this.modalVersion = true);
+            });
+        }   
     }
 
     updateVersion(): void {

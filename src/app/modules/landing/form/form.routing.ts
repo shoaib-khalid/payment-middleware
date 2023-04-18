@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 import { AccessGuard } from 'app/core/guard/access.guard';
 import { FormComponent } from './form.component';
 import { AccessFormGuard } from 'app/core/guard/access-form.guard';
-import { FormResolver } from '../landing.resolvers';
+import { BNPLResolver, FormResolver } from './form.resolver';
 
 export const formRoutes: Route[] = [
     {
@@ -21,7 +21,8 @@ export const formRoutes: Route[] = [
         component   : FormComponent,
         canActivate : [AccessFormGuard],
         resolve     : {
-            FormResolver  : FormResolver,
+            // FormResolver : FormResolver,
+            BNPLResolver : BNPLResolver
         }
     }
 ];

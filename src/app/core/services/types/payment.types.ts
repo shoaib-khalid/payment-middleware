@@ -1,9 +1,9 @@
 export interface BetterPayment
 {
-    cardCCV         : string;
-    cardMonth       : string;
-    cardYear        : string;
-    creditCardNo    : string;
+    cardCCV?        : string;
+    cardMonth?      : string;
+    cardYear?       : string;
+    creditCardNo?   : string;
     phoneNo         : string;
     orderTotalAmount?: number;
     paymentService  : string;
@@ -34,4 +34,12 @@ export interface PaymentRequestResp
     spId                : string;
     status              : string;
     systemTransactionId : string;
+}
+
+export interface BNPLList
+{
+    logoUrl       : string;
+    providerName  : string;
+    providerValue : string;
+    type          : string;
 }

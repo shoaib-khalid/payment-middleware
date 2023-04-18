@@ -4,7 +4,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { FuseConfigService } from '@fuse/services/config';
 import { AppConfig, Scheme, Theme, Themes } from 'app/core/config/app.config';
 import { Layout } from 'app/layout/layout.types';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, PlatformLocation } from '@angular/common';
 import { StoresService } from 'app/core/services/store.service';
 import { Order } from 'app/core/services/types/order.types';
 import { Store, StoreAsset } from 'app/core/services/types/store.types';
@@ -47,8 +47,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy
         private _fuseConfigService: FuseConfigService,
         @Inject(DOCUMENT) private _document: Document,
         private _storesService: StoresService,
-        private _changeDetectorRef: ChangeDetectorRef,
-
+        private _changeDetectorRef: ChangeDetectorRef
     )
     {
     }
@@ -126,6 +125,19 @@ export class PageHeaderComponent implements OnInit, OnDestroy
                 this.loadingStatus = false;
             })
         
+    }
+
+    /**
+     * Function to close the PWA
+     */
+    closePWA() {
+        // Close the current window or tab
+        window.close();
+
+        // If the above method doesn't work, try navigating to a blank page
+        if (!window.closed) {
+            this._document.location.href = 'about:blank';
+        }
     }
 
 }
