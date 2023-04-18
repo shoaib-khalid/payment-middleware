@@ -52,6 +52,6 @@ export class AppComponent implements OnInit
 
     updateVersion(): void {
         this.modalVersion = false;
-        document.location.reload();
+        window.location.reload();
     }
 }
