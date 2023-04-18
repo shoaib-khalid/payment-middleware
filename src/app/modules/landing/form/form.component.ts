@@ -76,13 +76,13 @@ export class FormComponent implements OnInit, OnDestroy
                 cardMonth: cardExpiryMonth,
                 cardYear: cardExpiryYear,
                 creditCardNo: formattedCardNo,
-                customerName: this.form.get('name').value,
+                customerName: this.form.get('name').value.trim(),
                 // orderTotalAmount: 0,
                 paymentService: 'CREDIT', // Atome
                 paymentType: 'CREDIT', // BNPL
                 transactionId: this.transactionId,
-                phoneNo: this.form.get('phoneNo').value,
-                email: this.form.get('email').value
+                phoneNo: this.form.get('phoneNo').value.trim(),
+                email: this.form.get('email').value.trim()
             }
 
             // Post to payment service
@@ -112,13 +112,13 @@ export class FormComponent implements OnInit, OnDestroy
     confirmBNPL(value: BNPLList) {
 
         const betterPayRequest: BetterPayment = {
-            customerName: this.form.get('name').value,
+            customerName: this.form.get('name').value.trim(),
             // orderTotalAmount: 0,
             paymentService: value.providerValue, // Atome
             paymentType: value.type, // BNPL
             transactionId: this.transactionId,
-            phoneNo: this.form.get('phoneNo').value,
-            email: this.form.get('email').value
+            phoneNo: this.form.get('phoneNo').value.trim(),
+            email: this.form.get('email').value.trim()
         }
 
         // Post to payment service
