@@ -131,13 +131,15 @@ export class PageHeaderComponent implements OnInit, OnDestroy
      * Function to close the PWA
      */
     closePWA() {
-        // Close the current window or tab
-        window.close();
+        window.location.reload();
+        // // Close the current window or tab
+        // window.close();
 
-        // If the above method doesn't work, try navigating to a blank page
-        if (!window.closed) {
-            this._document.location.href = 'about:blank';
-        }
+        // // If the above method doesn't work, try navigating to a blank page
+        // if (!window.closed) {
+        //     this._document.location.href = 'about:blank';
+        // }
     }
+    
 
 }
