@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { filter, map } from 'rxjs';
+import { filter, map, tap } from 'rxjs';
 
 @Component({
     selector   : 'app-root',
     templateUrl: './app.component.html',
     styleUrls  : ['./app.component.scss']
 })
-export class AppComponent
+export class AppComponent implements OnInit
 {
     modalVersion: boolean = false;
+    version: any = '';
     /**
      * Constructor
      */
@@ -29,22 +30,24 @@ export class AppComponent
         //         document.location.reload();
         //     });
 
-        // if (this._swUpdate.isEnabled) {
-        //     this._swUpdate.versionUpdates.pipe(
-        //         filter((evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
-        //         map((evt: any) => {
-        //             console.info(`currentVersion=[${evt.currentVersion} | latestVersion=[${evt.latestVersion}]`);
-        //             this.modalVersion = true;
-        //         }),
-        //     );
-        // }
         if (this._swUpdate.isEnabled) {
 
-            this._swUpdate.available.subscribe(() => {
-                this._swUpdate.activateUpdate()
-                    .then(()=> this.modalVersion = true);
-            });
-        }   
+            this._swUpdate.versionUpdates.pipe(
+                filter((evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+                map((evt: any) => {
+                    console.info(`currentVersion=[${evt.currentVersion.appData.version} | latestVersion=[${evt.latestVersion.appData.version}]`);
+                    this.modalVersion = true;
+                }),
+            ).subscribe();
+        } 
+    }
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+
     }
 
     updateVersion(): void {

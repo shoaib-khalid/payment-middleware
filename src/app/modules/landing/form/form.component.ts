@@ -19,7 +19,7 @@ export class FormComponent implements OnInit, OnDestroy
     form: UntypedFormGroup
     formType: string = '';
     transactionId: string = '';
-    bnplPage: boolean = false;
+    bnplPage: boolean = true;
 
     /**
      * Constructor
@@ -99,10 +99,6 @@ export class FormComponent implements OnInit, OnDestroy
         else if (this.formType === 'bnpl') {
 
             this.bnplPage = true;
-            
-            const name = this.form.get('name').value;
-            const phoneNo = this.form.get('phoneNo').value; 
-
         }
 
         

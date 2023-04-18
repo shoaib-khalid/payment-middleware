@@ -12,7 +12,7 @@ export class BNPLComponent implements OnInit, OnDestroy
 {
     @Output() dataFromBNPLTemplate = new EventEmitter();
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    provider: BNPLList = null;
+    provider: BNPLList | string = null;
     bnplList: BNPLList[] = [];
 
     /**
