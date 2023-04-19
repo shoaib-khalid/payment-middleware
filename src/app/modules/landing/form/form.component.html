@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="flex flex-col w-full">
 	<!-- Header -->
 	<page-header-form></page-header-form>
 	<div class="flex flex-col items-center justify-start w-full h-auto bg-default p-2">
@@ -220,8 +220,15 @@
 		</div>
 		<!-- BNPL page -->
 		<ng-template #bnplTemplate>
-			<div class="bg-white rounded-lg w-full p-4 flex flex-col gap-3 shadow md:max-w-2/3">
-				<app-bnpl (dataFromBNPLTemplate)="confirmBNPL($event)"></app-bnpl>
+			<div class="flex flex-col gap-2 w-full items-center">
+				<div class="flex flex-row items-center gap-1 w-full md:max-w-2/3">
+					<mat-icon (click)="goBack()" class="icon-size-6 text-secondary cursor-pointer" [svgIcon]="'mat_solid:arrow_back'"></mat-icon>
+					<span (click)="goBack()" class="cursor-pointer">Back</span>
+				</div>
+
+				<div class="bg-white rounded-lg w-full p-4 flex flex-col gap-3 shadow md:max-w-2/3">
+					<app-bnpl (dataFromBNPLTemplate)="confirmBNPL($event)"></app-bnpl>
+				</div>
 			</div>
 		</ng-template>
 	</div>

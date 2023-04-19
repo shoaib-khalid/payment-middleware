@@ -19,7 +19,7 @@ export class FormComponent implements OnInit, OnDestroy
     form: UntypedFormGroup
     formType: string = '';
     transactionId: string = '';
-    bnplPage: boolean = false;
+    bnplPage: boolean = true;
 
     /**
      * Constructor
@@ -129,5 +129,9 @@ export class FormComponent implements OnInit, OnDestroy
 
         })
         
+    }
+
+    goBack() {
+        this.bnplPage = false;
     }
 }

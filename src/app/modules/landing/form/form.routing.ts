@@ -21,8 +21,7 @@ export const formRoutes: Route[] = [
         component   : FormComponent,
         canActivate : [AccessFormGuard, AccessGuard],
         resolve     : {
-            // FormHeaderDataResolver : FormHeaderDataResolver,
-            // FormResolver : FormResolver,
+            FormResolver : FormResolver,
             BNPLResolver : BNPLResolver
         }
     }
