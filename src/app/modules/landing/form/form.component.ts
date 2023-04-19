@@ -19,7 +19,7 @@ export class FormComponent implements OnInit, OnDestroy
     form: UntypedFormGroup
     formType: string = '';
     transactionId: string = '';
-    bnplPage: boolean = true;
+    bnplPage: boolean = false;
 
     /**
      * Constructor
