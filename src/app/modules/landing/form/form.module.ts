@@ -13,6 +13,7 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BNPLComponent } from '../bnpl/bnpl.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { PageHeaderFormModule } from 'app/layout/common/page-header-form/page-header-form.module';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { MatRadioModule } from '@angular/material/radio';
         MatInputModule,
         CreditCardDirectivesModule,
         MatTooltipModule,
-        MatRadioModule
+        MatRadioModule,
+        PageHeaderFormModule
     ]
 })
 export class FormModule

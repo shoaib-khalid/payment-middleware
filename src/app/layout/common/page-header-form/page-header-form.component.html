@@ -1,0 +1,33 @@
+<div class="w-full h-auto bg-merchantblue flex flex-col p-4 pb-3 gap-1">
+    <!-- Store info -->
+    <div class="grid grid-cols-4 gap-3 items-start justify-between">
+        <div class="col-span-3 text-white flex flex-col gap-1.5 leading-none">
+            <span class="text-lg font-medium truncate">{{store.name}}</span>
+            <div class="flex flex-row items-center gap-x-1 tracking-tight">
+                <mat-icon class="icon-size-4 text-white" [svgIcon]="'mat_solid:email'"></mat-icon>
+                <span class="truncate">{{store.email}}</span>
+            </div>
+            <div class="flex flex-row items-center gap-x-1 tracking-tight">
+                <mat-icon class="icon-size-4 text-white" [svgIcon]="'mat_solid:phone'"></mat-icon>
+                <span>{{store.phoneNumber}}</span>
+            </div>
+            <div class="flex flex-row items-center gap-x-1 tracking-tight">
+                <mat-icon class="icon-size-4 text-white" [svgIcon]="'mat_solid:receipt_long'"></mat-icon>
+                <span>{{order.invoiceId}}</span>
+            </div>
+        </div>
+        <img
+            class="col-span-1 object-cover rounded-full w-16 h-16 ring-2 ring-white justify-self-end"
+            [src]="storeLogo.assetUrl" alt="Store Logo">
+    </div>
+    <!-- Order Details -->
+    <div class="flex flex-row justify-end gap-2 items-end">
+        <span class="text-white text-lg tracking-tight leading-none">Total</span>
+        <span class="text-white text-3xl font-bold tracking-tight leading-none">{{order.total | currency: 'RM'}}</span>
+        <!-- <div class="flex leading-none">
+            <div class="bg-white rounded-full px-5 py-4 w-auto bg-opacity-70">
+                <span class="text-4xl leading-none font-bold tracking-tighter">RM3000</span>
+            </div>
+        </div> -->
+    </div>
+</div>

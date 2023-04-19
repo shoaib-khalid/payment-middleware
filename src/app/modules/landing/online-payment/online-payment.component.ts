@@ -4,6 +4,7 @@ import { StoresService } from 'app/core/services/store.service';
 import { Subject, combineLatest, map, of, switchMap, takeUntil } from 'rxjs';
 import { PaymentRequestResp } from 'app/core/services/types/payment.types';
 import { PaymentService } from 'app/core/services/payment.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'app-online-payment',
@@ -14,16 +15,20 @@ export class OnlinePaymentComponent implements OnInit, OnDestroy
 {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     qrUrl: string = '';
+    orderId: string = '';
+    storeId: string = '';
 
     /**
      * Constructor
      */
     constructor(
-        private _storesService: StoresService,
+        private _route: ActivatedRoute,
         private _changeDetectorRef: ChangeDetectorRef,
         private _paymentService: PaymentService
     )
     {
+        this.orderId = this._route.snapshot.queryParamMap.get('orderId');
+        this.storeId = this._route.snapshot.queryParamMap.get('storeId');
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -39,7 +44,8 @@ export class OnlinePaymentComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((payment: PaymentRequestResp) => {
                 if (payment) {
-                    this.qrUrl = 'https://' + AppConfig.settings.paymentMiddleware + '/form/card/' + payment.systemTransactionId;
+                    this.qrUrl = 'https://' + AppConfig.settings.paymentMiddleware + '/form/card/' + payment.systemTransactionId + 
+                        '?storeId=' + this.storeId + '&orderId=' + this.orderId;
                 }
 
                 // Mark for check

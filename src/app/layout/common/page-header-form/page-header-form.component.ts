@@ -10,8 +10,8 @@ import { Order } from 'app/core/services/types/order.types';
 import { Store, StoreAsset } from 'app/core/services/types/store.types';
 
 @Component({
-    selector     : 'page-header',
-    templateUrl  : './page-header.component.html',
+    selector     : 'page-header-form',
+    templateUrl  : './page-header-form.component.html',
     styles       : [
         `
             settings {
@@ -31,7 +31,7 @@ import { Store, StoreAsset } from 'app/core/services/types/store.types';
     ],
     encapsulation: ViewEncapsulation.None
 })
-export class PageHeaderComponent implements OnInit, OnDestroy
+export class PageHeaderFormComponent implements OnInit, OnDestroy
 {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     store: Store = null;

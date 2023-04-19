@@ -14,7 +14,9 @@ export class PayLaterComponent
 {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     qrUrl: string = '';
-    
+    orderId: string = '';
+    storeId: string = '';
+
     /**
      * Constructor
      */
@@ -22,9 +24,12 @@ export class PayLaterComponent
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _changeDetectorRef: ChangeDetectorRef,
-        private _paymentService: PaymentService
+        private _paymentService: PaymentService,
+        private _route: ActivatedRoute
     )
     {
+        this.orderId = this._route.snapshot.queryParamMap.get('orderId');
+        this.storeId = this._route.snapshot.queryParamMap.get('storeId');
     }
         
     // -----------------------------------------------------------------------------------------------------
@@ -40,7 +45,9 @@ export class PayLaterComponent
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((payment: PaymentRequestResp) => {
                 if (payment) {
-                    this.qrUrl = 'https://' + AppConfig.settings.paymentMiddleware + '/form/bnpl/' + payment.systemTransactionId;
+                    this.qrUrl = 'https://' + AppConfig.settings.paymentMiddleware + '/form/bnpl/' + payment.systemTransactionId + 
+                        '?storeId=' + this.storeId + '&orderId=' + this.orderId;
+
                 }
 
                 // Mark for check
