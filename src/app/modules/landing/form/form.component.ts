@@ -100,8 +100,6 @@ export class FormComponent implements OnInit, OnDestroy
 
             this.bnplPage = true;
         }
-
-        
     }
 
     /**
