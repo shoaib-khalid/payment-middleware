@@ -30,21 +30,27 @@ export class BNPLComponent implements OnInit, OnDestroy
         this._paymentService.bnplList$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((bnplList: BNPLList[]) => {
+
                 if (bnplList) {
                     this.bnplList = bnplList;
                 }
-
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
             });
-    
-
     }
 
-    ngOnDestroy(): void {
+    /**
+    * On destroy
+    */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
     }
 
     confirm() {
+        // Emit the selected provider to parent template
         this.dataFromBNPLTemplate.emit(this.provider);
     }
 

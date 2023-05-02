@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-2 w-full">
     <span class="font-semibold">Select provider</span>
-    <div>
+    <div *ngIf="bnplList.length > 0 ; else noProvider">
         <mat-radio-group
             class="grid grid-cols-2"
             color="primary"
@@ -21,6 +21,9 @@
             </mat-radio-button>
         </mat-radio-group>
     </div>
+    <ng-template #noProvider>
+        <span>There are currently no available providers.</span>
+    </ng-template>
     <!-- Confirm/Next Button -->
     <div class="w-full mt-2">
         <!-- Delete button -->

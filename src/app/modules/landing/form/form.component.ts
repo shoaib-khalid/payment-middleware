@@ -98,6 +98,7 @@ export class FormComponent implements OnInit, OnDestroy
         // Form Type BNPL
         else if (this.formType === 'bnpl') {
 
+            // Set to true to display bnpl providers selection page
             this.bnplPage = true;
         }
     }
@@ -132,6 +133,7 @@ export class FormComponent implements OnInit, OnDestroy
     }
 
     goBack() {
+        // Set to false to close bnpl providers selection page 
         this.bnplPage = false;
     }
 }

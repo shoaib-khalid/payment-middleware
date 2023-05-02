@@ -59,7 +59,7 @@
             </div>
             <span class="text-2xl font-medium text-center">Your payment is accepted.</span>
             <ng-container *ngIf="channel === 'DELIVERIN'; else noRedirectSuccess">
-                <span class="text-center text-gray-500 px-2">Please click the button below if you are not redirected 
+                <span class="text-center text-gray-500 px-2">Please click the button below if you are not redirected{{countdown > 0 ? '': '.'}} 
                     <!-- Redirect countdown -->
                     <ng-container *ngIf="countdown > 0">
                         <a>in {{countdown | i18nPlural: countdownMapping }}...</a>
@@ -123,7 +123,7 @@
             <span class="text-2xl font-medium text-center">Payment Failed</span>
             <span class="text-center text-gray-500 px-4">An error occurred while proccessing your payment.</span>
 			<ng-container *ngIf="channel === 'DELIVERIN'; else noRedirectFailed">
-                <span class="text-center text-gray-500 px-2">Please click the button below if you are not redirected 
+                <span class="text-center text-gray-500 px-2">Please click the button below if you are not redirected{{countdown > 0 ? '': '.'}} 
                     <!-- Redirect countdown -->
                     <ng-container *ngIf="countdown > 0">
                         <a>in {{countdown | i18nPlural: countdownMapping }}...</a>
